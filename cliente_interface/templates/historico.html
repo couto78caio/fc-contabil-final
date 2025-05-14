@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico de Envios – F&C Contábil</title>
+    <link rel="stylesheet" href="{{ url_for('client.static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="page-container">
+        <div class="page-header">
+            <h1>Histórico de Documentos Enviados</h1>
+            <a href="{{ url_for('client.index') }}" class="btn btn-secondary">Voltar ao Envio</a>
+        </div>
+        
+        <p><strong>CNPJ:</strong> {{ session.get('cnpj', 'Não informado') }}</p>
+
+        {% if documentos %}
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Mês Referência</th>
+                            <th>Modalidade</th>
+                            <th>Nome do Arquivo</th>
+                            <th>Data de Envio</th>
+                            <th>Protocolo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for doc in documentos %}
+                        <tr>
+                            <td>{{ doc.mes_referencia }}</td>
+                            <td>{{ doc.modalidade.replace('_', ' ')|title }}</td>
+                            <td>{{ doc.nome_arquivo }}</td>
+                            <td>{{ doc.data_envio.strftime('%d/%m/%Y %H:%M:%S') if doc.data_envio else 'N/A' }}</td>
+                            <td>{{ doc.protocolo }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="alert alert-info" style="text-align: center;">
+                Nenhum documento enviado ainda.
+            </div>
+        {% endif %}
+        <div style="margin-top: 20px; text-align: center;">
+            <a href="{{ url_for('client.logout_cliente') }}" class="btn btn-secondary" style="background-color: #6c757d;">Sair</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envio de Documentos – F&C Contábil</title>
+    <link rel="stylesheet" href="{{ url_for(
+'client.static
+', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Envio de Documentos</h2>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category if category else 'info' }}" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" enctype="multipart/form-data" action="{{ url_for('client.index') }}">
+            <div>
+                <label for="cnpj">CNPJ:</label>
+                <input type="text" id="cnpj" name="cnpj" value="{{ session.get('cnpj', '') }}" readonly required>
+            </div>
+
+            <div>
+                <label for="mes_referencia">Mês de Referência:</label>
+                <input type="month" id="mes_referencia" name="mes_referencia" required>
+            </div>
+
+            <div>
+                <label for="modalidade">Modalidade:</label>
+                <select id="modalidade" name="modalidade" required>
+                    <option value="" disabled selected>Selecione a modalidade</option>
+                    <option value="notas_fiscais">Notas Fiscais</option>
+                    <option value="extrato_bancario">Extrato Bancário</option>
+                    <option value="folha_pagamento">Folha de Pagamento</option>
+                    <option value="outros">Outros</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="arquivo">Selecionar Arquivo:</label>
+                <input type="file" id="arquivo" name="arquivo" accept=".pdf,.xml,.ofx,.jpg,.jpeg,.png" required>
+            </div>
+
+            <button type="submit" class="btn">Enviar Documento</button>
+        </form>
+
+        {% if protocolo %}
+        <div class="protocolo-info">
+            <p>✅ Documento enviado com sucesso!</p>
+            <p>Protocolo: <strong>{{ protocolo }}</strong></p>
+        </div>
+        {% endif %}
+
+        <div style="margin-top: 20px; text-align: center;">
+          <a href="{{ url_for('client.historico_envios') }}" class="btn btn-secondary">Ver Histórico de Envios</a>
+        </div>
+        <div style="margin-top: 10px; text-align: center;">
+            <a href="{{ url_for('client.logout_cliente') }}" class="btn btn-secondary" style="background-color: #6c757d;">Sair</a>
+        </div>
+    </div>
+</body>
+</html>
