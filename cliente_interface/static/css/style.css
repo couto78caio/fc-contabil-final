@@ -1,0 +1,237 @@
+/* styles.css - Interface do Cliente Padronizada */
+
+/* 1. Reset básico e Padrões Globais */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #f1f5f9; /* Cor de fundo similar ao painel */
+  color: #334155; /* Cor de texto padrão */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Centraliza conteúdo em páginas simples como login */
+}
+
+/* 2. Container Principal (para login, formulários, etc.) */
+.container {
+  background-color: #fff;
+  padding: 32px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 480px; /* Largura máxima para formulários */
+  margin: 20px;
+}
+
+/* 3. Cabeçalhos e Títulos */
+h1, h2, h3, h4, h5, h6 {
+  color: #1e293b; /* Cor escura para títulos */
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 24px;
+}
+
+/* 4. Formulários */
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="file"],
+select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="file"]:focus,
+select:focus {
+  outline: none;
+  border-color: #3b82f6; /* Azul para foco, similar ao painel */
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+}
+
+/* 5. Botões */
+.btn {
+  display: inline-block;
+  width: 100%;
+  padding: 12px 20px;
+  background-color: #1e293b; /* Cor de botão principal do painel */
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  text-decoration: none; /* Para links estilizados como botões */
+}
+
+.btn:hover {
+  background-color: #334155; /* Cor de hover do painel */
+}
+
+.btn-secondary {
+  background-color: #64748b;
+}
+
+.btn-secondary:hover {
+  background-color: #475569;
+}
+
+/* 6. Mensagens e Alertas */
+.alert {
+  padding: 16px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.alert-success {
+  background-color: #d1fae5; /* Verde claro */
+  color: #065f46; /* Verde escuro */
+  border-left: 5px solid #10b981;
+}
+
+.alert-danger {
+  background-color: #fee2e2; /* Vermelho claro */
+  color: #991b1b; /* Vermelho escuro */
+  border-left: 5px solid #ef4444;
+}
+
+.alert-info {
+  background-color: #dbeafe; /* Azul claro */
+  color: #1e40af; /* Azul escuro */
+  border-left: 5px solid #3b82f6;
+}
+
+/* Estilo para a área de protocolo (exemplo de adaptação) */
+.protocolo-info {
+  margin-top: 30px;
+  background-color: #e0f2fe; /* Azul bem claro */
+  border-left: 5px solid #0ea5e9; /* Azul céu */
+  padding: 15px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.protocolo-info p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.protocolo-info strong {
+  font-size: 1.2rem;
+  color: #0369a1;
+}
+
+/* 7. Layout para páginas com mais conteúdo (ex: histórico) */
+.page-container {
+  width: 100%;
+  max-width: 1024px; /* Maior largura para conteúdo */
+  margin: 40px auto; /* Mais margem para páginas de conteúdo */
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.page-header h1 {
+  text-align: left;
+  margin-bottom: 0;
+  font-size: 1.8rem;
+}
+
+/* Tabela para histórico */
+.table-container {
+  overflow-x: auto; /* Para tabelas responsivas */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+thead {
+  background-color: #f1f5f9;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+th {
+  font-weight: bold;
+  color: #334155;
+}
+
+tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+/* Links */
+a {
+ color: #1e3a8a;
+ text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Responsividade básica */
+@media (max-width: 768px) {
+  .container, .page-container {
+    margin: 10px;
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .page-header h1 {
+    margin-bottom: 10px;
+  }
+}
+
