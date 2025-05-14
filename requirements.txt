@@ -1,0 +1,8 @@
+Flask
+flask-cors
+flask-login
+pycryptodome
+sqlalchemy
+werkzeug
+python-dotenv
+gunicorn
